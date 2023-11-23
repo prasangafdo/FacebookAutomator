@@ -17,7 +17,7 @@ public class LoginPage {
     private final By txtPassword =  By.id("pass");
     private final By btnName =  By.name("login");
 
-    private static WebDriver driver;
+    protected static WebDriver driver;
 
 //    static {
 //        WebDriverManager.chromedriver().setup();
