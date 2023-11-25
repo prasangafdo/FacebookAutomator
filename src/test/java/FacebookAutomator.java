@@ -7,10 +7,10 @@ import org.testng.asserts.SoftAssert;
 public class FacebookAutomator {
     public static void main(String[] args) {
         SoftAssert softAsset = new SoftAssert();
-        Login.loginWithCredentials("prasangafdz@outlook.com","Devil18@#");
+        Login.loginWithCredentials("","#");
         softAsset.assertTrue(Wall.isHomeButtonDisplaying(),"Home button is not displaying");
         Wall.navigateToMessagesByURL();
         Messages.gatherNumberOfTreads();
         softAsset.assertAll();
     }
-}
+}//div[@class='x1n2onr6']/div

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MessagesPage extends LoginPage{
 
-    private final By btnMessage =  By.xpath("(//div[@class='x1n2onr6']/div)[1]");
+    private final By btnMessage =  By.xpath("//div[@class='x1n2onr6']/div");
 
     public void gatherNumberOfTreads(){
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
