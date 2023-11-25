@@ -6,7 +6,7 @@ public class Messages {
 
     private static final MessagesPage messages = new MessagesPage();
 
-    public static void gatherNumberOfTreads(){
+    public static void gatherNumberOfTreads() throws InterruptedException {
         messages.gatherNumberOfTreads();
     }
 }
