@@ -2,6 +2,7 @@ package com.facebook.page;
 
 import org.openqa.selenium.AcceptedW3CCapabilityKeys;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,23 +23,35 @@ public class MessagesPage extends LoginPage{
 
 
     public void gatherNumberOfTreads() throws InterruptedException {
-        Thread.sleep(5);
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(50));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(btnMessage));
-            threads = driver.findElements(btnMessage);
-            System.out.println(threads.size());
+        Thread.sleep(8000);
+        Actions actions = new Actions(driver);
+        if (threads==null){
+//                actions.moveToElement(threads.get(0));
+                actions.sendKeys(Keys.ARROW_DOWN);
+                actions.perform();
+            }
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(btnMessage));
+        threads = driver.findElements(btnMessage);
+        System.out.println(threads.size());
+//        actions.sendKeys(Keys.ARROW_UP);
+        actions.perform();
     }
 
     public void deleteChats(){
         Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(btnMessage));
-        actions.build().perform();
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(50));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(btnOptions)).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(btnDelete)).click();
-        if(isDeleteWarningPopupDisplaying()){
-            wait.until(ExpectedConditions.visibilityOfElementLocated(btnDeleteOnAlert)).click();
+
+        for (WebElement element: threads) {
+            actions.moveToElement(element);
+            actions.build().perform();
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(50));
+            wait.until(ExpectedConditions.elementToBeClickable(btnOptions)).click();
+            wait.until(ExpectedConditions.elementToBeClickable(btnDelete)).click();
+            if(isDeleteWarningPopupDisplaying()){
+                wait.until(ExpectedConditions.visibilityOfElementLocated(btnDeleteOnAlert)).click();
+            }
         }
+        threads = null;
     }
 
     public boolean isDeleteWarningPopupDisplaying(){

@@ -47,4 +47,8 @@ public class LoginPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(txtPassword)).sendKeys(password);
         wait.until(ExpectedConditions.visibilityOfElementLocated(btnName)).click();
     }
+
+    public void endSession(){
+        driver.quit();
+    }
 }

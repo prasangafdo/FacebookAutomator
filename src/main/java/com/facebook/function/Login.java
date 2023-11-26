@@ -9,4 +9,9 @@ public class Login {
     public static void loginWithCredentials(String username, String password){
         login.loginWithCredentials(username, password);
     }
+    public static void endSession(){
+        login.endSession();
+    }
+
+
 }
