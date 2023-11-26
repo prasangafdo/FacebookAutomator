@@ -9,4 +9,8 @@ public class Messages {
     public static void gatherNumberOfTreads() throws InterruptedException {
         messages.gatherNumberOfTreads();
     }
+    public static void deleteChats() {
+        messages.deleteChats();
+    }
+
 }
